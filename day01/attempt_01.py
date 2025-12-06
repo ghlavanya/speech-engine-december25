@@ -44,3 +44,16 @@ plt.colorbar(format='%+2.0f dB')
 plt.title("Spectrogram")
 plt.tight_layout()
 plt.show()
+
+#------------plot mel spectrogram ------------
+
+mel_spectrogram = librosa.feature.melspectrogram(y=signal, sr=sr, n_fft=n_fft, hop_length=hop_length, n_mels=128)
+
+mel_spectrogram_db = librosa.power_to_db(mel_spectrogram, ref=np.max)
+
+plt.figure(figsize=(10, 4))
+librosa.display.specshow(mel_spectrogram_db, sr=sr, x_axis='time', y_axis='log')
+plt.colorbar(format='%+2.0f dB')
+plt.title("Mel Spectrogram")
+plt.tight_layout()
+plt.show()
