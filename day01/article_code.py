@@ -13,3 +13,12 @@ print("First 10 samples:", samples[:10])
 if samples.dtype != np.float32:
     samples = samples.astype(np.float32) / np.max(np.abs(samples))
     print("Normalized samples dtype:", samples.dtype)
+
+
+#from playsound import playsound
+#playsound(audio_path)
+
+import sounddevice as sd
+
+sd.play(samples, sr)
+sd.wait()
