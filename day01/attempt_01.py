@@ -8,7 +8,7 @@ import numpy as np
 
 audio_path = r"C:\Users\lavan\OneDrive\Desktop\dev\spectograms\0_jackson_21.wav"
 
-print("cheching file exists at:",audio_path)
+print("checking file exists at:",audio_path)
 print("exists?:",os.path.exists(audio_path))
 
 #load audio file
@@ -57,3 +57,28 @@ plt.colorbar(format='%+2.0f dB')
 plt.title("Mel Spectrogram")
 plt.tight_layout()
 plt.show()
+
+#------------ mel frequency cepstral coefficients (MFCCs) -------------
+
+mfccs = librosa.feature.mfcc(
+    y=signal,
+    sr=sr,
+    n_mfcc=13,      # standard number of MFCCs
+    n_fft=n_fft,
+    hop_length=hop_length
+)
+
+print("MFCCs shape:", mfccs.shape)  # (n_mfcc, time frames)
+
+plt.figure(figsize=(10, 4))
+librosa.display.specshow(
+    mfccs,
+    x_axis="time",
+    sr=sr
+)
+plt.colorbar()
+plt.title("MFCCs")
+plt.ylabel("MFCC coefficient")
+plt.tight_layout()
+plt.show()
+
