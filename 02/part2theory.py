@@ -33,7 +33,7 @@ plt.title("Linear-frequency Spectrogram (log-freq, dB)")
 plt.tight_layout()
 plt.show()
 
-# ---------- 4. Mel spectrogram in dB (what Article 2 focuses on) ----------
+# ---------- 4. Mel spectrogram in db----------
 
 mel_spec = librosa.feature.melspectrogram(
     y=signal,
